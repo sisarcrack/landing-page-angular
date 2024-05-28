@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="name" class="form-label">Apellido</label>
+      <label for="apellido" class="form-label">Apellido</label>
       <input
         [ngClass]="{
           'is-invalid':
@@ -40,11 +40,19 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="name" class="form-label">Dni</label>
+      <label for="tipoDni" class="form-label">Tipo de DNI:</label>
+      <select class="form-select" id="tipoDni" formControlName="tipoDni">
+        <option value="DNI">DNI</option>
+        <option value="Pasaporte">Pasaporte</option>
+        <option value="Cedula">Cedula</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="dni" class="form-label">{{ tipoDni }}</label>
       <input
         [ngClass]="{
           'is-invalid':
-            hasErrors('nombre', 'required') || hasErrors('dni', 'minlength')
+            hasErrors('dni', 'required') || hasErrors('dni', 'minlength')
         }"
         type="text"
         class="form-control"
@@ -52,10 +60,10 @@
         formControlName="dni"
       />
       <div class="text-danger" *ngIf="hasErrors('dni', 'required')">
-        Dni requerido
+        {{ tipoDni }} requerido
       </div>
       <div class="text-danger" *ngIf="hasErrors('dni', 'minlength')">
-        Dni requerido minimo 3 caracteres
+        {{ tipoDni }} requerido minimo 3 caracteres
       </div>
     </div>
     <div class="mb-3">
